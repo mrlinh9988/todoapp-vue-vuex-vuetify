@@ -67,6 +67,7 @@
 
 <script>
 export default {
+  name: "signup",
   data() {
     return {
       password: "",
