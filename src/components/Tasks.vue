@@ -2,7 +2,7 @@
   <div>
     <v-card style="height: 100%; overflow: hidden">
       <v-toolbar color="blue" dark>
-        <v-toolbar-title>linh</v-toolbar-title>
+        <v-toolbar-title>List id: {{ listId }}</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
@@ -23,21 +23,23 @@
           <New-Task />
         </v-flex>
       </v-card-actions>
-      <notes-modal />
     </v-card>
+
+    <router-view name="notes" key="$route.fullPath"></router-view>
   </div>
 </template>
 
 <script>
+// TODO: CHÚ Ý: Để thêm key vào router-view để update component
 import Task from "@/components/Task";
 import NewTask from "@/components/NewTask";
-import NotesModal from "@/components/NotesModal";
+// import NotesModal from "@/components/NotesModal";
 export default {
   name: "tasks",
   components: {
     Task,
     NewTask,
-    NotesModal,
+    // NotesModal,
   },
   data() {
     return {
@@ -49,19 +51,24 @@ export default {
           isCompleted: false,
         },
         {
-          id: 1,
+          id: 2,
           title: "task 1",
           sub_title: "alo",
           isCompleted: true,
         },
         {
-          id: 1,
+          id: 3,
           title: "task 1",
           sub_title: "alo",
           isCompleted: true,
         },
       ],
     };
+  },
+  computed: {
+    listId() {
+      return this.$route.params.id;
+    },
   },
 };
 </script>

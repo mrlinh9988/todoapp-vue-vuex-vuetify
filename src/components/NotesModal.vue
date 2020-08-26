@@ -40,7 +40,7 @@
 
         <v-list-item-action>
           <v-row align="center" justify="center" width="100%">
-            <v-btn color="primary">Close</v-btn>
+            <v-btn color="primary" @click="close">Close</v-btn>
             <v-btn color="red" dark>Remove Task</v-btn>
           </v-row>
         </v-list-item-action>
@@ -75,6 +75,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    close() {
+      this.open = false;
+    },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-list-item @click.prevent="toggle(index)">
     <v-list-item-action>
-      <v-btn icon>
+      <v-btn icon @click="openModal()">
         <v-icon color="pink">edit</v-icon>
       </v-btn>
     </v-list-item-action>
@@ -30,6 +30,15 @@ export default {
       console.log(index);
 
       // TODO: push the changes to the store
+    },
+    openModal() {
+      console.log(this.task.id);
+      this.$router.push({
+        name: "notes",
+        params: {
+          taskId: this.task.id,
+        },
+      });
     },
   },
 };

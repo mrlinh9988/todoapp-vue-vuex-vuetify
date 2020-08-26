@@ -7,11 +7,13 @@
         </v-flex>
 
         <v-flex lg6 pr-2 pl-2>
-          <Tasks />
+          <!-- <Tasks /> -->
+          <router-view name="tasks" :key="$route.fullPath"></router-view>
         </v-flex>
 
         <v-flex lg3 pl-2>
-          <Optionbar />
+          <!-- <Optionbar /> -->
+          <router-view></router-view>
         </v-flex>
       </v-layout>
     </v-container>
@@ -20,15 +22,15 @@
 
 <script>
 import List from "@/components/List";
-import Tasks from "@/components/Tasks";
-import Optionbar from "@/components/Optionbar";
+// import Tasks from "@/components/Tasks";
+// import Optionbar from "@/components/Optionbar";
 
 export default {
   name: "todo",
   components: {
     List,
-    Tasks,
-    Optionbar,
+    // Tasks,
+    // Optionbar,
   },
 };
 </script>

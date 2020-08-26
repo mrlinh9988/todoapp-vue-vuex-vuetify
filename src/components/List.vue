@@ -26,7 +26,11 @@
     <v-divider></v-divider>
 
     <v-list class="pl-2">
-      <v-list-item v-for="list in lists" :key="list.id">
+      <v-list-item
+        v-for="list in lists"
+        :key="list.id"
+        :to="{ name: 'tasks', params: { id: list.id } }"
+      >
         <v-list-item-content>
           <v-list-item-title>{{ list.title }}</v-list-item-title>
         </v-list-item-content>
