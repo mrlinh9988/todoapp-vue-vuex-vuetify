@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="show">
     <v-card height="100%">
       <v-toolbar color="pink" dark>
         <v-toolbar-title>Options</v-toolbar-title>
@@ -34,12 +34,12 @@
           <template v-slot:activator>
             <v-list-item-title>List options</v-list-item-title>
           </template>
-          <v-list-item>
+          <v-list-item @click="displayNotification()">
             <v-list-item-content>
               <v-list-item-title color="danger">Remove list</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item>
+          <v-list-item @click.prevent="openDrawer">
             <v-list-item-content>
               <v-list-item-title color="danger">Change background</v-list-item-title>
             </v-list-item-content>
@@ -48,12 +48,12 @@
         </v-list-group>
       </v-list>
     </v-card>
-    <!-- <MoreOptions /> -->
+    <MoreOptions />
   </div>
 </template>
 
 <script>
-// import MoreOptions from "@/components/MoreOptions";
+import MoreOptions from "@/components/MoreOptions";
 export default {
   name: "optionBar",
   data() {
@@ -103,9 +103,28 @@ export default {
     filter(value) {
       console.log("Filter by " + value);
     },
+    openDrawer() {
+      this.$store.commit("SET_DRAWER", true);
+    },
+    displayNotification() {
+      this.$store.commit("SET_NOTIFICATION", {
+        display: true,
+        text: "List removed!",
+        alertClass: "success",
+        timeout: 3000,
+      });
+    },
   },
   components: {
-    // MoreOptions,
+    MoreOptions,
+  },
+  computed: {
+    show() {
+      return !!this.$route.params.id;
+    },
+    drawer() {
+      return this.$store.getters.DRAWER;
+    },
   },
 };
 </script>

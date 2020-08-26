@@ -12,25 +12,28 @@
         </v-flex>
 
         <v-flex lg3 pl-2>
-          <!-- <Optionbar /> -->
+          <Optionbar />
           <router-view></router-view>
         </v-flex>
       </v-layout>
+      <Notification />
     </v-container>
   </div>
 </template>
 
 <script>
 import List from "@/components/List";
+import Notification from "@/components/Notification";
 // import Tasks from "@/components/Tasks";
-// import Optionbar from "@/components/Optionbar";
+import Optionbar from "@/components/Optionbar";
 
 export default {
   name: "todo",
   components: {
     List,
     // Tasks,
-    // Optionbar,
+    Optionbar,
+    Notification,
   },
 };
 </script>

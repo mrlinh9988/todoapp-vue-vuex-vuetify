@@ -55,8 +55,8 @@ export default {
   name: "moreOptions",
   data() {
     return {
+      // open: true,
       loading: false,
-      open: false,
       imgUrl: "",
       imgName: "",
       imgFile: "",
@@ -91,6 +91,16 @@ export default {
     },
     uploadFile() {
       console.log(this.imgFile);
+    },
+  },
+  computed: {
+    open: {
+      get() {
+        return this.$store.getters.DRAWER;
+      },
+      set(value) {
+        this.$store.commit("SET_DRAWER", value);
+      },
     },
   },
 };
